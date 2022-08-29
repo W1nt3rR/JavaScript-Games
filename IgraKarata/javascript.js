@@ -123,8 +123,9 @@ const endGame = () => {
 const checkWinner = () => {
     const winner = check1();
     console.log("Winner is", winner);
+    
     if(winner == 0)
-    info.innerText = "Draw!";
+        info.innerText = "Draw!";
 
     info.innerText += ` Player ${winner} won!`;
 }
