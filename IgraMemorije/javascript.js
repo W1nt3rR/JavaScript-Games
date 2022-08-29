@@ -30,9 +30,12 @@ const flipCard = (e) => {
         if(flippedCards[0].target.innerText == flippedCards[1].target.innerText) {
             flippedCards[0].target.removeEventListener("click", flipCard);
             flippedCards[1].target.removeEventListener("click", flipCard);
-            disableFlip = false;
             flippedCards = [];
 
+            setTimeout(() => {
+                disableFlip = false;
+            }, 50)
+            
             numberFound += 2;
             if(numberFound == 16)
                 endGame();
