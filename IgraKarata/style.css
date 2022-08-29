@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    /* width: 100vw; */
+    padding: 10%;
+    justify-content: center;
+    gap: 32px;
+}
+
+button {
+    width: 96px;
+    height: 48px;
+    background-color: rgb(95, 95, 95);
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(122, 122, 122);
+}
+
+button:active {
+    background-color: rgb(122, 122, 122);
+}
+
+.container > div {
+    width: 30vw;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.pickedCards {
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+}
+
+.card {
+    width: 56px;
+    height: 72px;
+    /* border: 2px solid black; */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    background-color: white;
+}
+
+.cardRed {
+    color: red;
+}
+
+.cardBlack {
+    color: black;
+}
+
+.card p {
+    margin: 0
+}
+
+.filler {
+    flex-grow: 1;
+}
