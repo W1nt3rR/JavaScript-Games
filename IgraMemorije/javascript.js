@@ -57,6 +57,8 @@ const Start = () => {
     const randomized = array.sort(() => Math.random() - 0.5);
     info.innerText = "";
 
+    timer = 0;
+    clearInterval(Interval);
     Interval = setInterval(timerFn, 1000)
 
     randomized.map((letter) => {
