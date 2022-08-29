@@ -4,38 +4,36 @@ const time = document.getElementById("time");
 
 const array = ["A", "B", "C", "D", "E", "F", "G", "H", "A", "B", "C", "D", "E", "F", "G", "H"];
 
-
 let flippedCards = [];
 let disableFlip = false;
 let numberFound = 0;
 let timer = 0;
+let Interval;
 
 const flipCard = (e) => {
     if(disableFlip)
         return;
-
-    // console.log(e);
     
     if(flippedCards.length < 2) {
-        flippedCards.push(e);
+        if(flippedCards.includes(e.target))
+            return;
+
+        flippedCards.push(e.target);
         e.target.classList.remove("hiddenText");
     }
-
-    // console.log(flippedCards)
 
     if(flippedCards.length == 2)
     {
         disableFlip = true;
         
-        if(flippedCards[0].target.innerText == flippedCards[1].target.innerText) {
-            flippedCards[0].target.removeEventListener("click", flipCard);
-            flippedCards[1].target.removeEventListener("click", flipCard);
-            flippedCards = [];
+        if(flippedCards[0].innerText == flippedCards[1].innerText) {
+            flippedCards.forEach(element => {
+                element.removeEventListener("click", flipCard);
+            });
 
-            setTimeout(() => {
-                disableFlip = false;
-            }, 50)
-            
+            flippedCards = [];
+            disableFlip = false;
+
             numberFound += 2;
             if(numberFound == 16)
                 endGame();
@@ -44,11 +42,13 @@ const flipCard = (e) => {
         }
             
         setTimeout(() => {
-            flippedCards[0].target.classList.add("hiddenText");
-            flippedCards[1].target.classList.add("hiddenText");
+            flippedCards.forEach(element => {
+                element.classList.add("hiddenText");
+            });
+
             flippedCards = [];
             disableFlip = false;
-        }, 1000)
+        }, 750)
     }
 }
 
@@ -56,8 +56,6 @@ const timerFn = () => {
     timer++;
     time.innerText = `Time: ${timer}s`;
 }
-
-let Interval;
 
 const Start = () => {
     const randomized = array.sort(() => Math.random() - 0.5);
@@ -70,6 +68,7 @@ const Start = () => {
     disableFlip = false;
 
     clearInterval(Interval);
+    time.innerText = `Time: 0s`;
     Interval = setInterval(timerFn, 1000)
 
     randomized.map((letter) => {
@@ -85,11 +84,5 @@ const Start = () => {
 
 const endGame = () => {
     info.innerText = "Congratulations! You are now Smarter.";
-    numberFound = 0;
-    timer = 0;
-    flippedCards = [];
     clearInterval(Interval);
 }
-
-
-
