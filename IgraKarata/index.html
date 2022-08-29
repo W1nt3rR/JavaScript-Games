@@ -8,18 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="startGame()">Start</button>
+    <div class="control">
+        <button onclick="startGame()">Start</button>
+        <p id="info">Start the Game</p>
+    </div>
     <div class="container">
         <div>
-            <h2>Igrac 1</h2>
-            <button id="btn1" onclick="pickRandomCard(1)"">Igraj</button>
+            <h2>Player 1</h2>
+            <button id="btn1" onclick="pickRandomCard(1)"">Play</button>
             <div class="pickedCards" id="pickedCards1">
 
             </div>
         </div>
         <div>
-            <h2>Igrac 2</h2>
-            <button id="btn2" onclick="pickRandomCard(2)">Igraj</button>
+            <h2>Player 2</h2>
+            <button id="btn2" onclick="pickRandomCard(2)">Play</button>
             <div class="pickedCards" id="pickedCards2">
 
             </div>

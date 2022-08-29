@@ -1,3 +1,9 @@
+:root {
+    --shadow: 0px 0px 16px rgba(0, 0, 0, 16%);
+    --card-width: 56px;
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -13,11 +19,13 @@
 button {
     width: 96px;
     height: 48px;
+    margin: 0 0 24px 0;
     background-color: rgb(95, 95, 95);
     border-radius: 8px;
     cursor: pointer;
     color: white;
     border: none;
+    box-shadow: var(--shadow);
 }
 
 button:hover {
@@ -28,33 +36,41 @@ button:active {
     background-color: rgb(122, 122, 122);
 }
 
+.control {
+    display: flex;
+    gap: 32px;
+}
+
 .container > div {
-    width: 30vw;
-    background-color: lightblue;
+    width: calc(5 * var(--card-width) + 2 * 16px + 4 * 8px);
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
     border-radius: 16px;
     padding: 16px;
+    box-shadow: var(--shadow);
 }
 
 .pickedCards {
     display: flex;
     gap: 8px;
-    padding: 8px;
+    /* padding: 8px; */
+    height: 72px;
 }
 
 .card {
-    width: 56px;
+    width: var(--card-width);
     height: 72px;
-    /* border: 2px solid black; */
+    /* border: 1px solid black; */
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 8px;
     background-color: white;
+    box-shadow: var(--shadow);
 }
 
 .cardRed {
