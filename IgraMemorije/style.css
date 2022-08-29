@@ -39,7 +39,7 @@ button:active {
 #container {
     display: flex;
     justify-content: center;
-    margin: 32px;
+    /* margin: 16px; */
 }
 
 #game {
