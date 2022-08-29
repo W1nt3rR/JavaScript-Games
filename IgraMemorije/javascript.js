@@ -14,10 +14,14 @@ const flipCard = (e) => {
     if(disableFlip)
         return;
 
-    console.log(e);
-    e.target.classList.remove("hiddenText");
-    flippedCards.push(e);
-    console.log(flippedCards)
+    // console.log(e);
+    
+    if(flippedCards.length < 2) {
+        flippedCards.push(e);
+        e.target.classList.remove("hiddenText");
+    }
+
+    // console.log(flippedCards)
 
     if(flippedCards.length == 2)
     {
@@ -28,8 +32,8 @@ const flipCard = (e) => {
             flippedCards[1].target.removeEventListener("click", flipCard);
             disableFlip = false;
             flippedCards = [];
-            numberFound += 2;
 
+            numberFound += 2;
             if(numberFound == 16)
                 endGame();
 
@@ -53,11 +57,15 @@ const timerFn = () => {
 let Interval;
 
 const Start = () => {
-    board.innerHTML = "";
     const randomized = array.sort(() => Math.random() - 0.5);
-    info.innerText = "";
 
+    board.innerHTML = "";
+    info.innerText = "";
+    flippedCards = [];
+    numberFound = 0;
     timer = 0;
+    disableFlip = false;
+
     clearInterval(Interval);
     Interval = setInterval(timerFn, 1000)
 
@@ -76,6 +84,7 @@ const endGame = () => {
     info.innerText = "Congratulations! You are now Smarter.";
     numberFound = 0;
     timer = 0;
+    flippedCards = [];
     clearInterval(Interval);
 }
 
