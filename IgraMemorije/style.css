@@ -1,0 +1,83 @@
+:root {
+    --card-size: 96px;
+    --shadow: 0px 0px 16px rgba(0, 0, 0, 16%);
+    --gap: 32px;
+    --radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    width: 128px;
+    height: 56px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    transition: all 150ms;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    font-size: 16pt;
+}
+
+button:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+button:active {
+    background-color: rgb(134, 134, 134);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    margin: 32px;
+}
+
+#game {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    width: calc(var(--card-size) * 4 + 5 * var(--gap));
+    height: calc(var(--card-size) * 4 + 5 * var(--gap));;
+    gap: var(--gap);
+    border-radius: var(--radius);
+    padding: var(--gap);
+    box-shadow: var(--shadow);
+}
+
+.card {
+    box-shadow: var(--shadow);
+    background-color: white;
+    border-radius: var(--radius);
+    width: var(--card-size);
+    height: var(--card-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    transition: all 100ms;
+}
+
+.hiddenText {
+    font-size: 0;
+}
+
+.completed {
+    background-color: brown;
+}
+
+@media screen and (max-width: 650px){
+    :root {
+        --card-size: 48px;
+        --gap: 16px;
+        --radius: 8px;
+    }
+}

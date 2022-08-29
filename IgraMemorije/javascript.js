@@ -1,0 +1,68 @@
+const board = document.getElementById("game");
+const info = document.getElementById("info");
+
+const array = ["A", "B", "C", "D", "E", "F", "G", "H", "A", "B", "C", "D", "E", "F", "G", "H"];
+
+
+let flippedCards = [];
+let disableFlip = false;
+let numberFound = 0;
+
+const flipCard = (e) => {
+    if(disableFlip)
+        return;
+
+    console.log(e);
+    e.target.classList.remove("hiddenText");
+    flippedCards.push(e);
+    console.log(flippedCards)
+
+    if(flippedCards.length == 2)
+    {
+        disableFlip = true;
+        
+        if(flippedCards[0].target.innerText == flippedCards[1].target.innerText) {
+            flippedCards[0].target.removeEventListener("click", flipCard);
+            flippedCards[1].target.removeEventListener("click", flipCard);
+            disableFlip = false;
+            flippedCards = [];
+            numberFound += 2;
+
+            if(numberFound == 16)
+                endGame();
+
+            return;
+        }
+            
+        setTimeout(() => {
+            flippedCards[0].target.classList.add("hiddenText");
+            flippedCards[1].target.classList.add("hiddenText");
+            flippedCards = [];
+            disableFlip = false;
+        }, 1000)
+    }
+}
+
+const Start = () => {
+    board.innerHTML = "";
+    const randomized = array.sort(() => Math.random() - 0.5);
+    info.innerText = "";
+
+    randomized.map((letter) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.classList.add("hiddenText");
+        card.innerText = letter;
+        card.addEventListener("click", flipCard);
+
+        board.appendChild(card);
+    })
+}
+
+const endGame = () => {
+    info.innerText = "Congratulations! You are now Smarter.";
+    numberFound = 0;
+}
+
+
+
