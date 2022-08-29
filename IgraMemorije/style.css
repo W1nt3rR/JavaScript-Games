@@ -33,6 +33,7 @@ button:active {
     display: flex;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 #container {
@@ -76,7 +77,7 @@ button:active {
 
 @media screen and (max-width: 650px){
     :root {
-        --card-size: 48px;
+        --card-size: 56px;
         --gap: 16px;
         --radius: 8px;
     }

@@ -1,5 +1,6 @@
 const board = document.getElementById("game");
 const info = document.getElementById("info");
+const time = document.getElementById("time");
 
 const array = ["A", "B", "C", "D", "E", "F", "G", "H", "A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -7,6 +8,7 @@ const array = ["A", "B", "C", "D", "E", "F", "G", "H", "A", "B", "C", "D", "E", 
 let flippedCards = [];
 let disableFlip = false;
 let numberFound = 0;
+let timer = 0;
 
 const flipCard = (e) => {
     if(disableFlip)
@@ -43,10 +45,19 @@ const flipCard = (e) => {
     }
 }
 
+const timerFn = () => {
+    timer++;
+    time.innerText = `Time: ${timer}s`;
+}
+
+let Interval;
+
 const Start = () => {
     board.innerHTML = "";
     const randomized = array.sort(() => Math.random() - 0.5);
     info.innerText = "";
+
+    Interval = setInterval(timerFn, 1000)
 
     randomized.map((letter) => {
         const card = document.createElement("div");
@@ -62,6 +73,8 @@ const Start = () => {
 const endGame = () => {
     info.innerText = "Congratulations! You are now Smarter.";
     numberFound = 0;
+    timer = 0;
+    clearInterval(Interval);
 }
 
 
