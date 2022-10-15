@@ -1,0 +1,24 @@
+.btn {
+    min-width: 128px;
+    height: 56px;
+    background-color: blueviolet;
+    margin: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms;
+    color: white;
+}
+
+.btn:hover {
+    filter: brightness(1.2);
+}
+
+a {
+    text-decoration: none;
+}
+
+#content {
+    display: flex;
+}
